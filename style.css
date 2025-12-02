@@ -311,3 +311,71 @@ body {
     from, to { border-color: transparent }
     50% { border-color: white; }
 }
+
+/* ========================================= */
+/* --- MEDIA QUERIES (MOBILE ADJUSTMENTS) --- */
+/* ========================================= */
+
+@media (max-width: 600px) {
+    
+    /* 1. Main Container Adjustments */
+    .container {
+        /* Allow the container to take up more space on small screens */
+        width: 90%; 
+        padding: 30px 15px;
+    }
+
+    /* Shrink the main title */
+    .title {
+        font-size: 2.2rem; 
+    }
+
+    /* Shrink the first pop-up text */
+    .popup {
+        font-size: 1rem;
+    }
+    
+    /* 2. Photo Pop-up (.second-popup) Adjustments */
+    .second-popup {
+        /* Make it take up nearly the entire screen for better viewing */
+        width: 95vw; 
+        height: 95vh;
+        top: 2.5%; /* Adjust top pin */
+        left: 2.5%; /* Adjust left pin */
+        padding: 20px 15px; /* Reduce internal padding */
+    }
+
+    /* Ensure the photo string container fits the new height */
+    .photo-string-container {
+        height: 55vh;
+    }
+
+    /* 3. CRUCIAL: Shrink the Polaroid Frame and Image */
+    .polaroid-frame {
+        width: 280px; /* Reduced width */
+        height: 330px; /* Reduced height */
+        padding: 10px 10px 40px 10px; /* Adjust border size */
+    }
+
+    /* Shrink the clothespin */
+    .clothespin {
+        width: 30px;
+        top: -10px;
+    }
+
+    /* Shrink the navigation arrows */
+    .arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        top: 55%; 
+    }
+
+    /* Shrink the Grand Finale text */
+    .typewriter-text {
+        font-size: 2rem;
+    }
+    .final-details span {
+        font-size: 1.2rem !important;
+    }
+}
