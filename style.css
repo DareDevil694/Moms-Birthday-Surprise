@@ -1,0 +1,313 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Premium Card for Title + Subtitle */
+.container {
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.25);
+    padding: 40px 30px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 70%;
+    max-width: 650px;
+}
+
+/* Main Title */
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    animation: fadeIn 2s ease;
+    color: #ffffff;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+/* Subtitle */
+.subtitle {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    opacity: 1;
+    color: #ffffff;
+}
+
+/* Button */
+.btn {
+    margin-top: 25px;
+    padding: 15px 30px;
+    background: #fff;
+    color: #e6399b;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn:hover {
+    transform: scale(1.08);
+}
+
+/* Pop-up Box (The first dark one) */
+.popup {
+    margin-top: 30px;
+    background: rgba(0, 0, 0, 0.5); 
+    color: #ffffff; 
+    padding: 25px 20px;
+    border-radius: 25px;
+    width: 85%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 0.8s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    font-size: 1.2rem;
+    backdrop-filter: blur(8px);
+}
+
+.popup h2,
+.popup p {
+    color: #ffffff; 
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    pointer-events: none;
+}
+
+
+/* --- Second Pop-up (The large white one) --- */
+.second-popup {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+
+    background: rgba(255, 255, 255, 0.98); 
+    color: #e6399b;
+    padding: 35px 30px;
+    border-radius: 25px;
+
+    width: 90vw; 
+    max-width: 1000px; 
+    height: 80vh; 
+    max-height: 800px; 
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); 
+    font-size: 1.4rem;
+    backdrop-filter: blur(1px);
+    text-align: center; 
+    
+    overflow-y: auto;
+    z-index: 100; 
+}
+
+.second-popup h2,
+.second-popup p {
+    color: #e6399b;
+    text-shadow: none;
+}
+
+/* --- Photo String Slider Styles --- */
+
+/* Parent container for the string and photos */
+.photo-string-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 60vh; /* Enforced height for proper sizing */
+    
+    /* Rope/String Effect */
+    background-image: url('rope.png'); 
+    background-repeat: repeat-x;
+    background-size: auto 3px; 
+    background-position: center top 10%; 
+}
+
+/* Photo Display Area - used to center the active photo */
+.photo-display-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+    padding-top: 50px; 
+}
+
+/* Polaroid Frame Style (The large photo container) */
+.polaroid-frame {
+    position: absolute; 
+    width: 350px; 
+    height: 400px; 
+    background-color: white;
+    padding: 15px 15px 50px 15px; /* Creates the white border effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0; 
+    transform: translateY(10px) rotate(0deg); 
+}
+
+/* Active frame (The one that is visible) */
+.polaroid-frame.active {
+    opacity: 1; 
+    transform: translateY(0px) rotate(0deg); 
+    z-index: 15; 
+}
+
+/* Image inside the Polaroid frame */
+.polaroid-frame img:not(.clothespin) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Clothespin Style */
+.clothespin {
+    position: absolute;
+    top: -15px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px; 
+    height: auto;
+    z-index: 20;
+}
+
+/* Arrow Buttons */
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px;
+    color: #e6399b;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.3s;
+    user-select: none;
+    background-color: rgba(255, 255, 255, 0.7); 
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 25; 
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.arrow:hover {
+    background-color: rgba(230, 57, 155, 0.9); 
+    color: white;
+}
+
+/* --- GRAND FINALE FULL-SCREEN POP-UP STYLES (UPDATED) --- */
+
+.grand-finale-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 400px;
+    /* Dark, elegant background */
+    background: linear-gradient(135deg, #1f1c2c, #3f3d4d); 
+    color: white;
+    display: none; /* ✅ Hide by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 200; /* Ensure it's on top of everything */
+    padding: 20px;
+    border-radius:25px;
+}
+
+/* When revealed, override hidden state */
+.grand-finale-popup.active {
+    display: flex; /* ✅ Show when .active is added */
+}
+
+/* Typewriter Text Style */
+.typewriter-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e6399b; /* Pink accent */
+    white-space: nowrap; /* Keep text on one line */
+    overflow: hidden; /* Hide excess text */
+    margin-bottom: 20px;
+    border-right: 3px solid white; /* The blinking cursor effect */
+    animation: blink-caret .75s step-end infinite; /* Cursor animation */
+}
+
+/* Final Details Text */
+.final-details {
+    color: white;
+    margin-top: 20px;
+    opacity: 0; /* Hidden initially */
+    /* Fade in after 2 seconds to give time for the typing effect to finish */
+    transition: opacity 1s ease 2s; 
+}
+
+/* Blinking Cursor CSS */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}

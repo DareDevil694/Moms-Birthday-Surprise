@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="bday-music" loop>
+        <source src="bday_song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <h1 class="title">Happy Birthday Mom 🎉💖</h1>
+        <p class="subtitle">I made something special for you...</p>
+
+        <button class="btn" onclick="showSurprise()">Click for a Surprise</button>
+
+        <div id="popup" class="popup hidden">
+            <h2>💝 You’re the Best Mom Ever 💝</h2>
+            <p>Thank you for loving me, supporting me, and being my biggest strength.</p>
+            <p>I love you more than words can ever explain. ❤️</p>
+        </div>
+        
+        <div id="second-popup" class="second-popup hidden">
+            
+            <h2>📸 A Walk Through Our Memories 📸</h2>
+            
+            <div class="photo-string-container">
+                
+                <button class="arrow prev-btn" onclick="changePhoto(-1)">&#10094;</button>
+                <button class="arrow next-btn" onclick="changePhoto(1)">&#10095;</button>
+
+                <div id="photo-display-area" class="photo-display-area">
+                    </div>
+                
+            </div>
+            
+            <p id="photo-caption" style="margin-top: 15px; font-size: 1.1rem; color: #777;">Photo 1 of 16</p>
+
+            <p style="margin-top: 30px; font-size: 1.2rem; color: #e6399b; font-weight: 600;">Happy Birthday, I love you!</p>
+        </div>
+        <div id="grand-finale-popup" class="grand-finale-popup">
+  <div class="typewriter-text" id="typewriter-text"></div>
+  <div class="final-details hidden" id="final-details">
+                <span style="font-size: 2rem; display: block; margin-top: 50px;">Check your email! 🎉</span>
+                <span style="font-size: 1.5rem; display: block; margin-top: 10px;">The Grand Finale awaits...</span>
+            </p>
+        </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
