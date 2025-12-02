@@ -22,6 +22,45 @@ body {
     align-items: center;
 }
 
+/* --- NEW: SPLASH SCREEN STYLES --- */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1f1c2c, #3f3d4d); /* Dark background matching the finale */
+    z-index: 9999; /* Ensure it is on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s ease-out; /* Smooth transition when fading out */
+}
+
+.splash-logo {
+    width: 250px; /* Adjust size of your logo */
+    height: auto;
+    animation: pulse 1.5s infinite alternate; /* Optional: A slight pulsing animation */
+}
+
+/* Optional Logo Animation */
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* Class to fade out the splash screen */
+.fade-out {
+    opacity: 0 !important;
+    pointer-events: none; /* Make it unclickable after fade */
+}
+/* --- END SPLASH SCREEN STYLES --- */
+
 /* Premium Card for Title + Subtitle */
 .container {
     text-align: center;
