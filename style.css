@@ -5,10 +5,17 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     background: linear-gradient(135deg, #ffdde1, #ee9ca7);
     height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -23,17 +30,17 @@ body {
     position: relative;
 
     background: rgba(255, 255, 255, 0.25);
-    padding: 40px 30px;
+    padding: 6vw 4vw;
     border-radius: 25px;
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    width: 70%;
+    width: 90vw;
     max-width: 650px;
 }
 
 /* Main Title */
 .title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     animation: fadeIn 2s ease;
     color: #ffffff;
@@ -44,7 +51,7 @@ body {
 /* Subtitle */
 .subtitle {
     margin-top: 10px;
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
     opacity: 1;
     color: #ffffff;
 }
@@ -62,20 +69,22 @@ body {
     transition: 0.3s;
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    width: 90%;
+    max-width: 320px;
 }
 
 .btn:hover {
     transform: scale(1.08);
 }
 
-/* Pop-up Box (The first dark one) */
+/* Pop-up Box */
 .popup {
     margin-top: 30px;
-    background: rgba(0, 0, 0, 0.5); 
+    background: rgba(0, 0, 0, 0.5);
     color: #ffffff; 
-    padding: 25px 20px;
+    padding: 6vw 4vw;
     border-radius: 25px;
-    width: 85%;
+    width: 100%;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -83,11 +92,12 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     font-size: 1.2rem;
     backdrop-filter: blur(8px);
+    box-sizing: border-box;
 }
 
 .popup h2,
 .popup p {
-    color: #ffffff; 
+    color: #ffffff;
     font-weight: 500;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -114,109 +124,99 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100vw; 
+    height: 100vh; 
     pointer-events: none;
+    z-index: 0;
 }
 
-
-/* --- Second Pop-up (The large white one) --- */
+/* --- Second Pop-up --- */
 .second-popup {
-    position: fixed; 
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 
-    background: rgba(255, 255, 255, 0.98); 
+    background: rgba(255, 255, 255, 0.98);
     color: #e6399b;
-    padding: 35px 30px;
+    padding: 6vw 5vw;
     border-radius: 25px;
 
-    width: 90vw; 
-    max-width: 1000px; 
-    height: 80vh; 
-    max-height: 800px; 
+    width: 96vw;
+    max-width: 1000px;
+    height: 90vh;
+    max-height: 800px;
+    min-height: 320px;
+    min-width: 220px;
 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); 
-    font-size: 1.4rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    font-size: 1.2rem;
     backdrop-filter: blur(1px);
-    text-align: center; 
-    
-    overflow-y: auto;
-    z-index: 100; 
-}
+    text-align: center;
 
-.second-popup h2,
-.second-popup p {
-    color: #e6399b;
-    text-shadow: none;
+    overflow-y: auto;
+    z-index: 100;
 }
 
 /* --- Photo String Slider Styles --- */
-
-/* Parent container for the string and photos */
 .photo-string-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    height: 60vh; /* Enforced height for proper sizing */
-    
-    /* Rope/String Effect */
-    background-image: url('rope.png'); 
+    height: 45vh; /* Shorter for small screens */
+
+    background-image: url('rope.png');
     background-repeat: repeat-x;
-    background-size: auto 3px; 
-    background-position: center top 10%; 
+    background-size: auto 3px;
+    background-position: center top 10%;
 }
 
-/* Photo Display Area - used to center the active photo */
 .photo-display-area {
     position: relative;
     width: 100%;
     height: 100%;
-    display: flex; 
-    justify-content: center; 
-    align-items: flex-start; 
-    padding-top: 50px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
 }
 
-/* Polaroid Frame Style (The large photo container) */
 .polaroid-frame {
-    position: absolute; 
-    width: 350px; 
-    height: 400px; 
+    position: absolute;
+    width: clamp(170px, 60vw, 350px);
+    height: clamp(200px, 65vw, 400px);
     background-color: white;
-    padding: 15px 15px 50px 15px; /* Creates the white border effect */
+    padding: 10px 10px 40px 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     transition: transform 0.5s ease, opacity 0.5s ease;
-    opacity: 0; 
-    transform: translateY(10px) rotate(0deg); 
+    opacity: 0;
+    transform: translateY(10px) rotate(0deg);
 }
 
-/* Active frame (The one that is visible) */
 .polaroid-frame.active {
-    opacity: 1; 
-    transform: translateY(0px) rotate(0deg); 
-    z-index: 15; 
+    opacity: 1;
+    transform: translateY(0px) rotate(0deg);
+    z-index: 15;
 }
 
-/* Image inside the Polaroid frame */
 .polaroid-frame img:not(.clothespin) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 3px;
 }
 
 /* Clothespin Style */
 .clothespin {
     position: absolute;
-    top: -15px; 
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 35px; 
+    width: 28px;
     height: auto;
     z-index: 20;
 }
@@ -227,155 +227,114 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    padding: 12px;
+    padding: 10px;
     color: #e6399b;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
     transition: 0.3s;
     user-select: none;
-    background-color: rgba(255, 255, 255, 0.7); 
+    background-color: rgba(255, 255, 255, 0.7);
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 25; 
+    z-index: 25;
 }
 
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
+.prev-btn { left: 8px; }
+.next-btn { right: 8px; }
 
 .arrow:hover {
-    background-color: rgba(230, 57, 155, 0.9); 
+    background-color: rgba(230, 57, 155, 0.9);
     color: white;
 }
 
-/* --- GRAND FINALE FULL-SCREEN POP-UP STYLES (UPDATED) --- */
+/* --- GRAND FINALE FULL-SCREEN POP-UP STYLES --- */
 
 .grand-finale-popup {
     position: fixed;
     top: 0;
     left: 0;
-    width: 800px;
-    height: 400px;
-    /* Dark, elegant background */
-    background: linear-gradient(135deg, #1f1c2c, #3f3d4d); 
+    width: 100vw;
+    height: 100vh;    /* Fullscreen for phone */
+    background: linear-gradient(135deg, #1f1c2c, #3f3d4d);
     color: white;
-    display: none; /* ✅ Hide by default */
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 200; /* Ensure it's on top of everything */
-    padding: 20px;
-    border-radius:25px;
+    z-index: 200;
+    padding: 6vw 4vw;
+    border-radius: 0;
 }
 
-/* When revealed, override hidden state */
 .grand-finale-popup.active {
-    display: flex; /* ✅ Show when .active is added */
+    display: flex;
 }
 
-/* Typewriter Text Style */
 .typewriter-text {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 3.5vw, 2rem);
     font-weight: bold;
-    color: #e6399b; /* Pink accent */
-    white-space: nowrap; /* Keep text on one line */
-    overflow: hidden; /* Hide excess text */
+    color: #e6399b;
+    white-space: normal;   /* Allow line breaks on extremely small screens */
+    overflow: hidden;
     margin-bottom: 20px;
-    border-right: 3px solid white; /* The blinking cursor effect */
-    animation: blink-caret .75s step-end infinite; /* Cursor animation */
+    border-right: 3px solid white;
+    animation: blink-caret .75s step-end infinite;
 }
 
 /* Final Details Text */
 .final-details {
     color: white;
-    margin-top: 20px;
-    opacity: 0; /* Hidden initially */
-    /* Fade in after 2 seconds to give time for the typing effect to finish */
-    transition: opacity 1s ease 2s; 
+    margin-top: 16px;
+    opacity: 0;
+    transition: opacity 1s ease 2s;
+    font-size: clamp(1rem, 3vw, 1.4rem);
 }
 
-/* Blinking Cursor CSS */
 @keyframes blink-caret {
     from, to { border-color: transparent }
     50% { border-color: white; }
 }
 
-/* ========================================= */
-/* --- MEDIA QUERIES (MOBILE ADJUSTMENTS) --- */
-/* ========================================= */
+@media (max-width: 850px) {
+    .second-popup {
+        max-width: 98vw;
+    }
+    .grand-finale-popup {
+        font-size: 1rem;
+        padding: 8vw 2vw;
+    }
+}
 
 @media (max-width: 600px) {
-    
-    /* 1. Main Container Adjustments */
-    .container {
-        /* Allow the container to take up more space on small screens */
-        width: 90%; 
-        padding: 30px 15px;
-    }
+    .container { width: 98vw; padding: 6vw 2vw; }
+    .title { font-size: clamp(1.3rem, 6vw, 2rem); }
+    .popup { font-size: 1rem; }
+    .second-popup { width: 99vw; min-height: 200px; padding: 5vw 2vw; }
+    .photo-string-container { height: 24vh; }
+    .polaroid-frame { width: clamp(130px, 60vw, 220px); height: clamp(140px, 65vw, 260px); padding: 7px 7px 28px 7px;}
+    .clothespin { width: 18px; top: -8px; }
+    .arrow { width: 28px; height: 28px; font-size: 14px; top: 55%; }
+    .typewriter-text { font-size: clamp(1rem, 6vw, 1.3rem);}
+    .final-details span { font-size: 1rem !important;}
+    .grand-finale-popup { border-radius: 0; font-size: 0.95rem;}
+}
 
-    /* Shrink the main title */
-    .title {
-        font-size: 2.2rem; 
+@media (max-width: 400px) {
+    .container, .second-popup, .popup {
+        padding: 4vw 2vw;
+        font-size: 0.92rem;
     }
-
-    /* Shrink the first pop-up text */
-    .popup {
-        font-size: 1rem;
-    }
-    
-    /* 2. Photo Pop-up (.second-popup) Adjustments */
-    .second-popup {
-        /* Make it take up nearly the entire screen for better viewing */
-        width: 95vw; 
-        height: 95vh;
-        top: 2.5%; /* Adjust top pin */
-        left: 2.5%; /* Adjust left pin */
-        padding: 20px 15px; /* Reduce internal padding */
-    }
-
-    /* Ensure the photo string container fits the new height */
-    .photo-string-container {
-        height: 55vh;
-    }
-
-    /* 3. CRUCIAL: Shrink the Polaroid Frame and Image */
-    .polaroid-frame {
-        width: 280px; /* Reduced width */
-        height: 330px; /* Reduced height */
-        padding: 10px 10px 40px 10px; /* Adjust border size */
-    }
-
-    /* Shrink the clothespin */
-    .clothespin {
-        width: 30px;
-        top: -10px;
-    }
-
-    /* Shrink the navigation arrows */
-    .arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        top: 55%; 
-    }
-
-    /* Shrink the Grand Finale text */
-    .typewriter-text {
-        font-size: 2rem;
-    }
-    .final-details span {
-        font-size: 1.2rem !important;
-    }
+    .title { font-size: 1.1rem; }
+    .photo-string-container { height: 20vh; }
+    .polaroid-frame { width: 90vw; height: 32vw; max-width: 120px; max-height: 180px; }
+    .arrow { width: 18px; height: 18px; font-size: 10px;}
+    .grand-finale-popup { padding: 3vw 1vw;}
 }
