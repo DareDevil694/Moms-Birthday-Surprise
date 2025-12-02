@@ -358,7 +358,7 @@ body {
     .popup { font-size: 1rem; }
     .second-popup { width: 99vw; min-height: 200px; padding: 5vw 2vw; }
     .photo-string-container { height: 24vh; }
-    .polaroid-frame { width: clamp(130px, 60vw, 220px); height: clamp(140px, 65vw, 260px); padding: 7px 7px 28px 7px;}
+    .polaroid-frame { width: clamp(130px, 60vw, 220px); height: clamp(140px, 65vw, 260px); padding: 7px 8px 3px 8px;}
     .clothespin { width: 18px; top: -8px; }
     .arrow { width: 28px; height: 28px; font-size: 14px; top: 55%; }
     .typewriter-text { font-size: clamp(1rem, 6vw, 1.3rem);}
@@ -373,6 +373,6 @@ body {
     }
     .title { font-size: 1.1rem; }
     .photo-string-container { height: 20vh; }
-    .polaroid-frame { width: 90vw; height: 32vw; max-width: 120px; max-height: 180px; }
+    .polaroid-frame { width: 100vw; height: 62vw; max-width: 140px; max-height: 180px; }
     .arrow { width: 18px; height: 18px; font-size: 10px;}
     .grand-finale-popup { padding: 3vw 1vw;}
