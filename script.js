@@ -171,6 +171,30 @@ function update() {
 
 update();
 
+// --------------------
+// NEW: Splash Screen Logic
+// --------------------
+
+window.onload = function() {
+    const splashScreen = document.getElementById('splash-screen');
+    const mainContent = document.getElementById('main-content');
+    
+    // Set a minimum time the logo is displayed (e.g., 3 seconds)
+    const MIN_DISPLAY_TIME = 3000; 
+
+    setTimeout(() => {
+        // 1. Fade out the splash screen
+        splashScreen.classList.add('fade-out');
+
+        // 2. Wait for the fade animation to finish (1 second delay from CSS transition)
+        setTimeout(() => {
+            splashScreen.classList.add('hidden'); // Fully remove the splash screen
+            mainContent.classList.remove('hidden'); // Show the main website content
+        }, 1000); 
+
+    }, MIN_DISPLAY_TIME);
+};
+
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
