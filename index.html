@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Splash Screen Overlay -->
+    <div id="splash-screen">
+      <img src="logo.png" alt="Logo" class="splash-logo">
+    </div>
+
     <audio id="bday-music" loop>
         <source src="bday_song.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -45,13 +50,14 @@
             <p style="margin-top: 30px; font-size: 1.2rem; color: #e6399b; font-weight: 600;">Happy Birthday, I love you!</p>
         </div>
         <div id="grand-finale-popup" class="grand-finale-popup">
-  <div class="typewriter-text" id="typewriter-text"></div>
-  <div class="final-details hidden" id="final-details">
-                <span style="font-size: 2rem; display: block; margin-top: 50px;">Check your email! 🎉</span>
-                <span style="font-size: 1.5rem; display: block; margin-top: 10px;">The Grand Finale awaits...</span>
-            </p>
+      <div class="typewriter-text" id="typewriter-text"></div>
+      <div class="final-details hidden" id="final-details">
+                    <span style="font-size: 2rem; display: block; margin-top: 50px;">Check your email! 🎉</span>
+                    <span style="font-size: 1.5rem; display: block; margin-top: 10px;">The Grand Finale awaits...</span>
+                </p>
+            </div>
         </div>
-        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
